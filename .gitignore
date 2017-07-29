@@ -15,4 +15,5 @@
 
 # Vim files
 **/*.swp
+.vim_session
 

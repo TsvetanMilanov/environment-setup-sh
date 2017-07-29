@@ -29,7 +29,7 @@ function ensure_git_plugin {
 function write_vimrc {
 	# Download vimrc from GitHub
 	echo Dowloading vimrc from GitHub
-	curl $vimrc_github_address -o $vimrc
+	curl -H 'Cache-Control: no-cache' $vimrc_github_address -o $vimrc
 	echo vimrc created
 }
 
