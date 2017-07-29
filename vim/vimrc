@@ -1,0 +1,51 @@
+" Setup vim
+" plugins expect bash - not fish, zsh, etc
+set shell=bash
+set number
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
+" which key should be the <leader>
+" (\ is the default, but ',' is more common, and easier to reach)
+let mapleader=","
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set colorcolumn=120
+
+" get rid of accidental trailing whitespace on save
+autocmd BufWritePre setup_vim.sh :%s/\s\+$//e
+
+" tell vim to allow you to copy between files, remember your cursor
+" position and other little nice things like that
+set viminfo='100,"2500,:200,%,n~/.viminfo'
+
+" Setup Pathogen
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+" Setup Plugins
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+" CtrlP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+set wildignore+=*\tmp\*,*.swp,*.zip,*.exe
+
+" Setup key bindings
+map <C-b> :NERDTreeToggle<CR>
+map <C-p> :CtrlP<CR>
+nmap <leader>t :tab split<CR>
+nmap <leader>w :tab close<CR>
+nmap <leader>a :tab split<CR>:Ack ""<Left>i
+nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
+
