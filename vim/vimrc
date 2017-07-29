@@ -51,6 +51,6 @@ nmap <leader>A :tab split<CR>:Ack <C-r><C-w><CR>
 
 " Tabs setup
 let g:lasttab = 1
-nmap <Leader>l :exe "tabn ".g:lasttab<CR>
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
