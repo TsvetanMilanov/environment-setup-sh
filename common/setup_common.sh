@@ -2,11 +2,15 @@
 
 function setup_windows {
 	echo Windows setup is not supported yet
+	# curl is installed
+	# install ack-grep
 	exit 1
 }
 
 function setup_ubuntu {
 	echo Common Ubuntu setup started
+	ack-grep --help &>/dev/null || sudo apt-get install ack-grep
+	curl --help &>/dev/null || sudo apt-get install curl
 }
 
 function setup_mac {

@@ -8,6 +8,12 @@ vim_bundle=$vim_root/bundle
 vim_autoload=$vim_root/autoload
 vim_autoload_pathogen_vim=$vim_autoload/pathogen.vim
 vimrc_github_address="https://raw.githubusercontent.com/TsvetanMilanov/environment-setup/master/vim/vimrc"
+base_dir=$(dirname "$0")
+setup_common=$base_dir/../common/setup_common.sh
+setup_go=$base_dir/../go/setup_go.sh
+
+# Common setup
+$setup_common
 
 # Functions
 function ensure_dir {
@@ -78,4 +84,7 @@ else
 	echo Creating vimrc
 	write_vimrc
 fi
+
+# Setup Go
+$setup_go
 
