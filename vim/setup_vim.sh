@@ -63,6 +63,8 @@ ensure_git_plugin leafgarland/typescript-vim
 ensure_git_plugin modille/groovy.vim
 ensure_git_plugin vim-scripts/groovyindent
 ensure_git_plugin martinda/Jenkinsfile-vim-syntax
+ensure_git_plugin fatih/vim-go
+ensure_git_plugin Valloric/YouCompleteMe
 echo All plugins installed
 
 echo !!! IMPORTANT !!!
@@ -87,4 +89,10 @@ fi
 
 # Setup Go
 $setup_go
+
+# Build YoCompleteMe
+echo Building YoCompleteMe
+$(cd $vim_bundle/YouCompleteMe && \
+	git submodule update --init --recursive && \
+	./install.py --gocode-completer --tern-completer --clang-completer || exit 1)
 

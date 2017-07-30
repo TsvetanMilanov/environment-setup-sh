@@ -9,8 +9,14 @@ function setup_windows {
 
 function setup_ubuntu {
 	echo Common Ubuntu setup started
-	ack-grep --help &>/dev/null || sudo apt-get install ack-grep
-	curl --help &>/dev/null || sudo apt-get install curl
+	ack-grep --help &>/dev/null || sudo apt-get install ack-grep || exit 1
+	curl --help &>/dev/null || sudo apt-get install curl || exit 1
+	dpkg -l build-essential &>/dev/null || sudo apt-get install build-essential || exit 1
+	dpkg -l python-dev &>/dev/null || sudo apt-get install python-dev || exit 1
+	dpkg -l python3-dev &>/dev/null || sudo apt-get install python3-dev || exit 1
+	dpkg -l libxml2-dev &>/dev/null || sudo apt-get install libxml2-dev || exit 1
+	dpkg -l libxslt-dev &>/dev/null || sudo apt-get install libxslt-dev || exit 1
+	which cmake &>/dev/null || sudo apt-get install cmake
 }
 
 function setup_mac {
@@ -25,5 +31,5 @@ case $uname_result in
 	MINGW*) setup_windows;;
 esac
 
-echo Setup Complete
+echo Common setup complete
 
